@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import BasicCalculator from "../components/basicCalculator";
+import homeStyles from '../assets/css/homeStyles';
 
 const Home = () => {
     const [count, setCount] = useState(0);
@@ -19,52 +21,34 @@ const Home = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.heading}>The Number: {count}</Text>
+        <View style={homeStyles.container}>
+            
+            {/* Counter Box */}
+            <View style={homeStyles.counterContainer}>
+                <Text style={homeStyles.heading}>The Number: {count}</Text>
 
-            {/* Increment Button */}
-            <TouchableOpacity style={styles.button} onPress={handleIncrement}>
-                <Text style={styles.buttonText}>Increment</Text>
-            </TouchableOpacity>
+                <View style={homeStyles.buttonContainer}>
+                    <TouchableOpacity style={homeStyles.button} onPress={handleIncrement}>
+                        <Text style={homeStyles.buttonText}>Increment</Text>
+                    </TouchableOpacity>
 
-            {/* Decrement Button */}
-            <TouchableOpacity style={styles.button} onPress={handleDecrement}>
-                <Text style={styles.buttonText}>Decrement</Text>
-            </TouchableOpacity>
+                    <TouchableOpacity style={homeStyles.button} onPress={handleDecrement}>
+                        <Text style={homeStyles.buttonText}>Decrement</Text>
+                    </TouchableOpacity>
 
-            {/* Reset Button */}
-            <TouchableOpacity style={styles.button} onPress={handleReset}>
-                <Text style={styles.buttonText}>Reset</Text>
-            </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={[homeStyles.button, homeStyles.buttonDanger]} 
+                        onPress={handleReset}
+                    >
+                        <Text style={homeStyles.buttonText}>Reset</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+
+            <BasicCalculator />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#f7f7f7',
-    },
-    heading: {
-        fontSize: 24,
-        marginBottom: 20,
-        fontWeight: 'bold',
-    },
-    button: {
-        backgroundColor: '#4CAF50',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginVertical: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-    },
-});
 
 export default Home;
