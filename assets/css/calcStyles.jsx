@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const calcStyles = StyleSheet.create({
     container: {
         width: 350,
         padding: 20,
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 1,
         shadowRadius: 8,
-        elevation: 4, // For Android shadow
+        elevation: 4,
         marginVertical: 50,
         alignSelf: 'center',
         alignItems: 'center',
@@ -25,29 +25,41 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         height: 45,
-        padding: 10,
+        paddingHorizontal: 10,
         marginBottom: 15,
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 8,
         fontSize: 16,
         backgroundColor: '#f9f9f9',
+        color: '#333',
         textAlign: 'right',
+    },
+    operatorContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginBottom: 15,
+    },
+    operatorButton: {
+        flex: 1,
+        paddingVertical: 12,
+        marginHorizontal: 5,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ddd', // Default background color
+    },
+    operatorButtonSelected: {
+        backgroundColor: '#007bff', // Highlighted when selected
+    },
+    operatorText: {
+        fontSize: 18,
         fontWeight: 'bold',
         color: '#333',
     },
-    picker: {
-        width: '100%',
-        height: 45,
-        marginBottom: 15,
-        borderRadius: 8,
-        backgroundColor: '#f0f0f0',
-        color: '#333',
-        borderWidth: 1,
-        borderColor: '#ccc',
-    },
     button: {
-        width: '100%', // Makes the button full width
+        width: '100%',
         paddingVertical: 12,
         borderRadius: 8,
         alignItems: 'center',
@@ -60,14 +72,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
-    buttonClear: {
+    buttonDanger: {
         backgroundColor: '#dc3545',
-    },
-    buttonClearText: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
     },
 });
 
-export default styles;
+export default calcStyles;

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import calcStyles from '../assets/css/calcStyles';
 
 const BasicCalculator = () => {
@@ -81,16 +80,21 @@ const BasicCalculator = () => {
                 placeholder="Enter second number"
             />
 
-            <Picker
-                selectedValue={operator}
-                onValueChange={(itemValue) => setOperator(itemValue)}
-                style={calcStyles.picker}
-            >
-                <Picker.Item label="Addition" value="+" />
-                <Picker.Item label="Subtraction" value="-" />
-                <Picker.Item label="Multiplication" value="*" />
-                <Picker.Item label="Division" value="/" />
-            </Picker>
+            {/* Operation Buttons */}
+            <View style={calcStyles.operatorContainer}>
+                {["+", "-", "*", "/"].map((op) => (
+                    <TouchableOpacity
+                        key={op}
+                        style={[
+                            calcStyles.operatorButton,
+                            operator === op && calcStyles.operatorButtonSelected,
+                        ]}
+                        onPress={() => setOperator(op)}
+                    >
+                        <Text style={calcStyles.operatorText}>{op}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
 
             <TouchableOpacity style={[calcStyles.button, calcStyles.buttonPrimary]} onPress={calculate}>
                 <Text style={calcStyles.buttonText}>Calculate</Text>
